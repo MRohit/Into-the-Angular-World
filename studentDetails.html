@@ -4,14 +4,51 @@
   </head>
   <body>
     <div ng-app="mainApp" ng-controller="studentController">
-      <p>Enter first name:<input type="text" ng-model="student.firstName"/></p>
-      <p>Enter last name:<input type="text" ng-model="student.lastName"/></p>
-      <p>Enter your fees:<input type="number" ng-model="student.fees"/></p>
-      <br/>
+      <table border="0">
+        <tr>
+          <td>Enter first name:</td>
+          <td><input type="text" ng-model="student.firstName"></td>
 
-      Student Full Name (Block letters):{{student.fullName() | uppercase}}<br/>
-      Student Full Name:{{student.fullName() | lowercase}}<br/>
-      Student fees:{{student.fees | currency}}
+        </tr>
+        <tr>
+          <td>Enter last name:</td>
+            <td><input type="text" ng-model="student.lastName"></td>
+          </tr>
+        <tr>
+          <td>Enter fees:</td>
+          <td><input type="number" ng-model="student.fees"></td>
+        </tr>
+        <tr>
+          <td>Enter subject:</td>
+          <td><input type="text" ng-model="subjectName"></td>
+        </tr>
+      </table>
+    </br>
+      <table>
+        <tr>
+          <td>Full name in capital</td>
+          <td>{{student.fullName() | uppercase}}</td>
+        </tr>
+        <tr>
+          <td>Full name in lowercase</td>
+          <td>{{student.fullName()|lowercase}}</td>
+        </tr>
+        <tr>
+          <td>Fees:</td>
+          <td>{{student.fees|currency}}</td>
+        </tr>
+
+        <tr>
+          <td>Subjects:</td>
+          <td>
+            <ul>
+              <li ng-repeat="subject in student.subjects| filter: subjectName |orderBy:'marks'">
+                {{subject.name+': '+subject.marks}}
+              </li>
+            </ul>
+          </td>
+        </tr>
+      </table>
     </div>
     <script>
       var mainApp = angular.module("mainApp", []);
@@ -21,6 +58,13 @@
           firstName:"Paul",
           lastName:"Walker",
           fees:100,
+          subjects:[
+            {name:'Physics',marks:70},
+            {name:'Chemistry',marks:80},
+            {name:'Maths',marks:92},
+            {name:'Biology',marks:75},
+            {name:'IT',marks:83}
+          ],
           fullName:function(){
             var studentObject;
             studentObject = $scope.student;
