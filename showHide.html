@@ -1,0 +1,21 @@
+<!doctype html>
+<html>
+  <head>
+    <script src = "https://ajax.googleapis.com/ajax/libs/angularjs/1.3.14/angular.min.js"></script>
+  </head>
+
+  <body>
+    <div ng-app="">
+      <input type="checkbox" ng-model="enableDisableButton"/>
+      <button ng-disabled="enableDisableButton"> Enable/Disable me</button>
+
+      <br>
+      <input type="checkbox" ng-model="hideButton"/>
+      <button ng-hide="hideButton">Hide me</button>
+      <br>
+      <h4>Increase counter using button click</h4>
+      <p>Total click:{{clickCounter}}</p>
+      <button ng-click="clickCounter=clickCounter+1">Click me</button>
+    </div>
+  </body>
+</html>
