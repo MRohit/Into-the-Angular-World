@@ -1,0 +1,67 @@
+<html>
+  <head>
+    <script src = "https://ajax.googleapis.com/ajax/libs/angularjs/1.3.14/angular.min.js"></script>
+    <script src = "mainApp.js"></script>
+    <script src = "shoppingController.js"></script>
+  </head>
+  <style>
+    table th,td{
+      border: 1px solid grey;
+      padding: 5px;
+      border-collapse: collapse;
+    }
+    table tr:nth-child(odd){
+      background-color: #f2f2f2;
+    }
+    table tr:nth-child(even){
+      background-color: #ffffff;
+    }
+  </style>
+  <body>
+    <div ng-app="mainApp" ng-controller="shoppingController">
+      <h3>Shop below available items</h3>
+      <table>
+        <tr>
+          <td>Enter your name:</td>
+          <td><input type="text" ng-model="myCart.name"/></td>
+        </tr>
+
+        <tr>
+          <td>Select items:</td>
+          <td><select multiple="true" size="7" ng-options="item as item.name for item in myCart.items track by item.price" ng-model="selected"></select></td>
+        </tr>
+
+      </table>
+      <br>
+      <h3>Total shopping details</h3>
+      <table>
+        <tr>
+          <td>Name</td>
+          <td>{{myCart.name}}</td>
+        </tr>
+        <tr>
+          <td>Items purchased</td>
+          <td>
+            <table>
+              <tr>
+                <td>Product Name</td>
+                <td>Price</td>
+                <td>Category</td>
+              </tr>
+              </tr>
+              <tr ng-repeat="item in selected">
+                <td>{{item.name}}</td>
+                <td>{{item.price}}</td>
+                <td>{{item.category}}</td>
+              </tr>
+            </table>
+          </td>
+        </tr>
+        <tr>
+          <td>Total Amount</td>
+          <td>{{myCart.totalAmount()}}</td>
+        </tr>
+      </table>
+    </div>
+  </body>
+</html>
