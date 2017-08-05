@@ -5,14 +5,36 @@
     <!-- SCROLLS -->
       <!-- load bootstrap and fontawesome via CDN -->
       <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
       <!-- SPELLS -->
       <!-- load angular and angular route via CDN -->
       <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.4.7/angular.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.4.7/angular-route.min.js"></script>
-
+      <meta name="viewport" content="width=device-width, initial-scale=1">
       <script src="script.js"></script>
+      <style>
+      @keyframes spin {
+          from { transform: scale(1) rotate(0deg);}
+          to { transform: scale(1) rotate(360deg);}
+      }
+
+      @-webkit-keyframes spinw {
+          from { -webkit-transform: rotate(0deg);}
+          to { -webkit-transform: rotate(360deg);}
+      }
+
+      @-moz-keyframes spinm {
+          from { -moz-transform: rotate(0deg);}
+          to { -moz-transform: rotate(360deg);}
+      }
+      .glyphicon-refresh-animate {
+          -animation: spin .7s infinite linear;
+          -ms-animation: spin .7s infinite linear;
+          -webkit-animation: spinw .7s infinite linear;
+          -moz-animation: spinm .7s infinite linear;
+      }
+      </style>
   </head>
 
   <body ng-controller="mainController">
@@ -24,7 +46,7 @@
         </div>
 
         <ul class="nav navbar-nav navbar-right">
-          <li><a href="#"> <i class="fa fa-home"></i> Home</a></li>
+          <li><a href="#home"> <i class="fa fa-home"></i> Home</a></li>
           <li><a href="#about"><i class="fa fa-shield"></i> About</a></li>
           <li><a href="#contact"><i class="fa fa-comment"></i> Contact</a></li>
         </ul>
