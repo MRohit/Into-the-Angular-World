@@ -1,9 +1,10 @@
 // create module
+// ngRoute has data about source and it's data passed as GET/POST
 var mainApp=angular.module("mainApp",["ngRoute"]);
 
 mainApp.config(function($routeProvider){
   $routeProvider
-  .when('/home',{
+  .when('/home',{ // use to navigate to appropriate controller and it's page
     templateUrl:'pages/home.html',
     controller:"mainController"
   })
